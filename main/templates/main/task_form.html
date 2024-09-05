@@ -1,0 +1,14 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+
+<h1>{% if form.instance.pk %}Обновление задаи{% else %}Добавление задачи{% endif %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Обновить{% else %}Добавить{% endif %}</button>
+</form>
+
+<a href="{% url 'task_list' %}">Вернуться к списку</a>
+{% endblock %}

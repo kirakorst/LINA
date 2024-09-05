@@ -11,10 +11,16 @@ from .views import user_activate
 from .views import ProfileDeleteView
 from .views import info_view
 from .views import contact_view
+from . import views
 
 
 app_name = 'main'
 urlpatterns = [
+    path('list/', views.task_list, name='task_list'),
+    path('create/', views.task_create, name='task_create'),
+    path('<int:pk>/', views.task_detail, name='task_detail'),
+    path('<int:pk>/update/', views.task_update, name='task_update'),
+    path('<int:pk>/delete/', views.task_delete, name='task_delete'),
     path('contact/', contact_view, name='contact'),
     path('info/', info_view, name='info'),
     path('accounts/profile/delete', ProfileDeleteView.as_view(), name='profile_delete'),

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
@@ -20,8 +20,46 @@ from django.core.signing import BadSignature
 from .utilities import signer
 from django.views.generic.edit import DeleteView
 from django.contrib.auth import logout
+from .models import Task
+from .forms import TaskForm
 
 
+
+def task_list(request):
+    task = Task.objects.all().order_by('-created_at')
+    return render(request, 'task_list.html', {'task': task})
+
+def task_detail(request, pk):
+    task = Task.objects.get(pk=pk)
+    return render(request, 'task_detail.html', {'task': task})
+
+def task_create(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')
+    else:
+        form = TaskForm()
+    return render(request, 'task_form.html', {'form': form})
+
+def task_update(request, pk):
+    task = Task.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instence=task)
+        if form.is_valid():
+            form.save()
+            return redirect('task_detail', pk=task.pk)
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'task_form.html', {'form': form})
+
+def task_delete(request, pk):
+    task = Task.objects.get(pk=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('task_list')
+    return render(request, 'confirm_delete.html', {'task': task})
 
 
 class ProfileDeleteView (SuccessMessageMixin, LoginRequiredMixin, DeleteView):

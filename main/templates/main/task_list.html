@@ -1,0 +1,25 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+
+<h1>Список задач</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <button type="submit">Добавить задачу</button>
+</form>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{task.title}} ({{ task.status }})
+            <a href="{% url 'task_detail' task.id %}">Подробнее</a>
+            <a href="{% url 'task_update' task.id %}">Обновить</a>
+            <a href="{% url 'task_delete' task.id %}">Удалить</a>
+        </li>
+    {% empty %}
+        <p>Задачи не найдены.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

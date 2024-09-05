@@ -1,5 +1,6 @@
 from django import forms
 from .models import AdvUser
+from .models import Task
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from .signals import post_register
@@ -8,6 +9,11 @@ from .signals import post_register
 
 
 
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ('title', 'description', 'status', 'due_date')
 
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Адрес электронной почты')
