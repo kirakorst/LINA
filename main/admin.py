@@ -28,7 +28,7 @@ class NonactivatedFilter(admin.SimpleListFilter):
             return queryset.filter(is_active=True, is_activated=True)
         elif val == 'threedays':
             d = datetime.date.today() - datetime.timedelta(days=3)
-            return queryset.filter(is_active=False, is_activate=False, date_joined__date__lt=d)
+            return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
         elif val == 'week':
             d = datetime.date.today() - datetime.timedelta(weeks=1)
             return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
