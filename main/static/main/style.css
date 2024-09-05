@@ -1,7 +1,69 @@
 header h1 {
     background: url("bg.jpg") left / auto 100% no-repeat, url("bg.jpg")
-                right / auto 100% no-repeat;
+        right / auto 100% no-repeat;
 }
+
 .root {
     font-size: larger;
+}
+
+
+.container-fluid {
+  background-color: #1a1a1a;
+}
+
+h1.display-1.text-center {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+p {
+    color: white;
+}
+
+.bg-light {
+  background-color: #212121 !important;
+}
+
+h3 {
+    color: white;
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Измените на желаемый цвет */
+}
+
+
+.col-sm-2.col-form-label {
+  color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+
+.nav-link {
+    color: white;
+}
+
+li {
+  font-weight: bold;
+  color: white;
+}
+
+.form-text {
+    color: white;
+}
+
+.form-check-label {
+    color: white;
+}
+
+.display-4 {
+    text-decoration: none;
+    color: white;
 }

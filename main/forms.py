@@ -5,6 +5,10 @@ from django.core.exceptions import ValidationError
 from .signals import post_register
 
 
+
+
+
+
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Адрес электронной почты')
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput, help_text=password_validation.password_validators_help_text_html())

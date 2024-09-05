@@ -7,10 +7,18 @@ from .views import BBLogoutView
 from .views import ProfileEditView
 from .views import PasswordEditView
 from .views import RegisterView, RegisterDoneView
+from .views import user_activate
+from .views import ProfileDeleteView
+from .views import info_view
+from .views import contact_view
 
 
 app_name = 'main'
 urlpatterns = [
+    path('contact/', contact_view, name='contact'),
+    path('info/', info_view, name='info'),
+    path('accounts/profile/delete', ProfileDeleteView.as_view(), name='profile_delete'),
+    path('accounts/activate/<str:sign>/', user_activate, name='activate'),
     path('accounts/register/done/', RegisterDoneView.as_view(), name='register_done'),
     path('accounts/register/', RegisterView.as_view(), name='register'),
     path('accounts/logout/', BBLogoutView.as_view(), name='logout'),

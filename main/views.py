@@ -16,6 +16,52 @@ from django.contrib.auth.views import PasswordChangeView
 from django.views.generic.edit import CreateView
 from .forms import RegisterForm
 from django.views.generic.base import TemplateView
+from django.core.signing import BadSignature
+from .utilities import signer
+from django.views.generic.edit import DeleteView
+from django.contrib.auth import logout
+
+
+
+
+class ProfileDeleteView (SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    model = AdvUser
+    template_name = 'main/profile_delete.html'
+    success_url = reverse_lazy('main:index')
+    success_message = 'Пользователь удален'
+
+    def setup(self, request, *args, **kwargs):
+        self.user_id = request.user.pk
+        return super().setup(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return super().post(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        if not queryset:
+            queryset = self.get_queryset()
+        return get_object_or_404(queryset, pk=self.user_id)
+
+
+
+
+
+def user_activate(request, sign):
+    try:
+        username = signer.unsign(sign)
+    except BadSignature:
+        return render(request, 'main/activation_failed.html')
+    user = get_object_or_404(AdvUser, username=username)
+    if user.is_activated:
+        template = 'main/activation_done_earlier.html'
+    else:
+        template = 'main/activation_done.html'
+        user.is_active = True
+        user.is_activated = True
+        user.save()
+    return render(request, template)
+
 
 
 
@@ -38,6 +84,12 @@ def profile(request):
 
 def index(request):
     return render(request, 'main/index.html')
+
+def info_view(request):
+    return render(request, 'main/info.html')
+
+def contact_view(request):
+    return render(request, 'main/contact.html')
 
 def other_page(request, page):
     try:
@@ -68,4 +120,7 @@ class ProfileEditView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         if not queryset:
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
+
+
+
 
