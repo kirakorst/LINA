@@ -20,47 +20,41 @@ from django.core.signing import BadSignature
 from .utilities import signer
 from django.views.generic.edit import DeleteView
 from django.contrib.auth import logout
-from .models import Task
-from .forms import TaskForm
-
+from tasks.models import Task
 
 
 def task_list(request):
-    task = Task.objects.all().order_by('-created_at')
-    return render(request, 'task_list.html', {'task': task})
+    tasks = Task.objects.all()
+    return render(request, 'tasks/task_list.html', {'tasksing': tasks})
+
+def task_create(request):
+    if request.method == 'POST':
+        Task.objects.create(
+            title=request.POST['title'],
+            description=request.POST['description']
+        )
+        return redirect('task_list')
+    return render(request, 'tasks/task_create.html')
+
+def task_delete(request, id):
+    task = Task.objects.get(id=id)
+    task.delete()
+    return redirect('task_list')
 
 def task_detail(request, pk):
     task = Task.objects.get(pk=pk)
     return render(request, 'task_detail.html', {'task': task})
 
-def task_create(request):
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('task_list')
-    else:
-        form = TaskForm()
-    return render(request, 'task_form.html', {'form': form})
-
 def task_update(request, pk):
     task = Task.objects.get(pk=pk)
     if request.method == 'POST':
-        form = TaskForm(request.POST, instence=task)
+        form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
             return redirect('task_detail', pk=task.pk)
     else:
         form = TaskForm(instance=task)
     return render(request, 'task_form.html', {'form': form})
-
-def task_delete(request, pk):
-    task = Task.objects.get(pk=pk)
-    if request.method == 'POST':
-        task.delete()
-        return redirect('task_list')
-    return render(request, 'confirm_delete.html', {'task': task})
-
 
 class ProfileDeleteView (SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = AdvUser

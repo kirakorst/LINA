@@ -4,14 +4,12 @@
 
 <h1>Список задач</h1>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-        <button type="submit">Добавить задачу</button>
-</form>
+<a href="{% url 'task_create' %}">Добавить задачу</a>
+
+
 
 <ul>
-    {% for task in tasks %}
+    {% for task in tasking %}
         <li>
             {{task.title}} ({{ task.status }})
             <a href="{% url 'task_detail' task.id %}">Подробнее</a>
