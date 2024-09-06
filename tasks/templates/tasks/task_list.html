@@ -9,7 +9,7 @@
 
 
 <ul>
-    {% for task in tasking %}
+    {% for task in tasks %}
         <li>
             {{task.title}} ({{ task.status }})
             <a href="{% url 'task_detail' task.id %}">Подробнее</a>
