@@ -12,8 +12,8 @@ header h1 {
   background-color: #1a1a1a;
 }
 
-h1.display-1.text-center {
-  color: white;
+h1 {
+  color: white !important;
 }
 
 h2 {
@@ -67,3 +67,4 @@ li {
     text-decoration: none;
     color: white;
 }
+
