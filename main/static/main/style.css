@@ -68,4 +68,11 @@ li {
     color: white;
 }
 
+.bi {      /* Это  размер для иконки */
+    font-size: 1.5em;
+}
+
+.dropdown-toggle::after {
+    display: none; /* Убираем стрелку */
+}
 
