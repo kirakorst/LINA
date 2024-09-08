@@ -10,6 +10,7 @@
         <title>{% block title %}LINA{% endblock %}- LINA</title>
         {% bootstrap_css %}
         <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         {% bootstrap_javascript %}
     </head>
     <body class="container-fluid">
@@ -29,14 +30,21 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                 Меню
+                                 <i class="bi bi-list"></i> <!-- Это кнопка МЕНЮ -->
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_authenticated %}
                                 <li><a class="dropdown-item" href="{% url 'task_list' %}">Задачи</a> </li>
                                 <li><a class="dropdown-item" href="{% url 'main:other' page='contact' %}">Контакты</a></li>
                                 <li><a class="dropdown-item" href="{% url 'main:other' page='info' %}">Информация</a></li>
                                 <li><a class="dropdown-item" href="{% url 'main:other' page='about' %}">О сайте</a></li>
                                 <li><hr class="dropdown-divider"></li>
+                                {% else %}
+                                <li><a class="dropdown-item" href="{% url 'main:other' page='contact' %}">Контакты</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:other' page='info' %}">Информация</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:other' page='about' %}">О сайте</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                {% endif %}
                             </ul>
                         </li>
                     </ul>
@@ -45,7 +53,7 @@
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Профиль</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><i class="bi bi-person-circle"></i><!-- Это кнопка Профиль --></a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="{% url 'main:profile' %}">Мой профиль</a>
                                 <a class="dropdown-item" href="{% url 'main:profile_edit' %}">Изменить личные данные</a>
