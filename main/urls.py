@@ -11,7 +11,7 @@ from .views import user_activate
 from .views import ProfileDeleteView
 from .views import info_view
 from .views import contact_view
-from . import views
+
 
 
 
