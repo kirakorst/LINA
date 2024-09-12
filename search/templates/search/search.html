@@ -1,0 +1,12 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+<h2>Поисковик LINA</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="query" placeholder="Введите поисковый запрос">
+    <button type="submit">Поиск</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+
+{# search_results.html #}
+<h1>Результаты поиска</h1>
+<ul>
+    {% for search_query in search_queries %}
+        <li>{{ search_query.query }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
