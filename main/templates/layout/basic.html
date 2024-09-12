@@ -14,19 +14,13 @@
         {% bootstrap_javascript %}
     </head>
     <body class="container-fluid">
-        <header class="mb-4">
-            <h1 class="display-4 text-center">
-                <a href="{% url 'search:search' %}" style="text-decoration: none; color: white;">
-                    <strong>LINA</strong>
-                </a>
-            </h1>
-        </header>
-        <nav class="row navbar navbar-expand-md bg-light">
+        <header>
+            <nav class="row navbar navbar-expand-md bg-light">
             <div class="col container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 33%">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +44,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="collapse navbar-collapse">
+                    <h1 class="display-4 text-center" style="margin: -10px auto -10px auto">
+                        <a href="{% url 'search:search' %}" style="text-decoration: none; color: white;">
+                            <strong>LINA</strong>
+                        </a>
+                    </h1>
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav" style="width: 33%">
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
                         <div class="nav-item dropdown">
@@ -76,12 +77,12 @@
                 </div>
             </div>
         </nav>
+        </header>
             <main class="col py-2">
                 {% bootstrap_messages %}
                 {% block content %}
                 {% endblock %}
             </main>
-        </div>
         <footer class="mt-3">
             <p class="text-end fst-italic">&copy; lina.ru</p>
         </footer>
