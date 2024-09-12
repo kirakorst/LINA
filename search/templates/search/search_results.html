@@ -1,12 +1,50 @@
 {% extends 'layout/basic.html' %}
 
 {% block content %}
+<div class="results-container">
+    <h1 class="results-title">Результаты поиска</h1>
+    <ul class="results-list">
+        {% for search_query in search_queries %}
+            <li class="results-item">{{ search_query.query }}</li>
+        {% endfor %}
+    </ul>
+</div>
 
-{# search_results.html #}
-<h1>Результаты поиска</h1>
-<ul>
-    {% for search_query in search_queries %}
-        <li>{{ search_query.query }}</li>
-    {% endfor %}
-</ul>
+<style>
+    .results-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .results-title {
+        font-size: 2em;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .results-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .results-item {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 10px 0;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .results-item:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+    }
+</style>
 {% endblock %}

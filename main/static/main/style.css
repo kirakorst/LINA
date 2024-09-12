@@ -76,29 +76,3 @@ li {
     display: none; /* Убираем стрелку */
 }
 
-
-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-input[type="text"] {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button[type="submit"] {
-  margin-left: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}

@@ -1,23 +1,119 @@
 {% extends 'layout/basic.html' %}
 
 {% block content %}
+<h1 class="task-title">Список задач</h1>
 
-<h1>Список задач</h1>
+<div class="add-task-button">
+    <a href="{% url 'task_create' %}" class="btn btn-primary">Добавить задачу</a>
+</div>
 
-<a href="{% url 'task_create' %}" style="text-decoration: none; color: white;">Добавить задачу</a>
-
-
-
-<ul>
+<ul class="task-list">
     {% for task in tasks %}
-        <li>
-            {{task.title}} ({{ task.status }})
-            <a href="{% url 'task_detail' task.id %}">Подробнее</a>
-            <a href="{% url 'task_update' task.id %}">Обновить</a>
-            <a href="{% url 'task_delete' task.id %}">Удалить</a>
+        <li class="task-item">
+            <div class="task-info">
+                <strong>{{ task.title }}</strong> <span class="task-status">({{ task.status }})</span>
+            </div>
+            <div class="task-actions">
+                <a href="{% url 'task_detail' task.id %}" class="btn btn-link">Подробнее</a>
+                <a href="{% url 'task_update' task.id %}" class="btn btn-success">Обновить</a>
+                <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Удалить</a>
+            </div>
         </li>
     {% empty %}
-        <p>Задачи не найдены.</p>
+        <li class="no-tasks">Задачи не найдены.</li>
     {% endfor %}
 </ul>
+
+<style>
+    .task-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .add-task-button {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-link {
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        margin-right: 10px;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .task-list {
+        list-style-type: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .task-item {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .task-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .task-status {
+        color: #666;
+        margin-left: 10px;
+    }
+
+    .task-actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .no-tasks {
+        padding: 15px;
+        text-align: center;
+        color: #999;
+    }
+</style>
 {% endblock %}
