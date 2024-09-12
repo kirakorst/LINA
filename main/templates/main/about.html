@@ -3,7 +3,51 @@
 {% block title %}О сайте{% endblock %}
 
 {% block content %}
-<h2>Информация о сайте</h2>
-<p>Сайт &laquo;LINA&raquo;, представляет собой мощный инструмент для управления знаниями и продуктивности, сочетая традиционные возможности заметок с современными технологиями искусственного интеллекта. Он позволяет пользователям эффективно организовывать свои мысли, планировать задачи и находить нужную информацию, что может значительно повысить их производительность и креативность.</p>
-<p>Все права принадлежат разработчику сайта "KiraKorst". &laquo;Django 4&raquo;.</p>
+<div class="about-container">
+    <h2 class="about-title">Информация о сайте</h2>
+    <p class="about-description">
+        Сайт &laquo;LINA&raquo;, представляет собой мощный инструмент для управления знаниями и продуктивности, сочетая традиционные возможности заметок с современными технологиями искусственного интеллекта. Он позволяет пользователям эффективно организовывать свои мысли, планировать задачи и находить нужную информацию, что может значительно повысить их производительность и креативность.
+    </p>
+
+    <div class="about-rights">
+        <p>Все права принадлежат разработчику сайта "KiraKorst".</p>
+        <p>Сайт создан с использованием фреймворка &laquo;Django 4&raquo;.</p>
+    </div>
+</div>
+
+<style>
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-title {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .about-description {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    .about-rights {
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .about-rights p {
+        color: #777;
+        margin-bottom: 10px;
+    }
+</style>
 {% endblock %}

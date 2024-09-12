@@ -3,20 +3,74 @@
 {% block title %}Контакты - {% endblock %}
 
 {% block content %}
-<h2>Обратная связь</h2>
-<p>Уважаемые посетители,</p>
-<p>Вы можете связаться с нами несколькими способами:</p>
-<p>1. По электронной почте - отправьте ваш запрос на адрес - support.lina@yandex.ru.</p>
-<p>2. По номеру телефона горячей линии - звоните по номеру - 89879348420.</p>
-<p>
-    Наша команда поддержки всегда готова помочь вам и ответить на ваши вопросы.
-    Мы стремимся предоставлять высококачественный сервис и решать все проблемы как можно быстрее.
-</p>
+<div class="contact-container">
+    <h2 class="contact-title">Обратная связь</h2>
+    <p class="contact-intro">Уважаемые посетители,</p>
+    <p class="contact-description">Вы можете связаться с нами несколькими способами:</p>
 
-<p>
-    Не забудьте при обращении подробно расписать суть возникшего инцедента и время его возникновения.
-    Это поможет нам лучше понять вашу проблему и найти наиболее эффективное решение.
-</p>
-<h3>Спасибо за ваше доверие и ожидание, что мы сможем помочь вам!</h3>
-<p>С уважением, администрация сайта - LINA</p>
+    <ul class="contact-methods">
+        <li><strong>Электронная почта:</strong> отправьте ваш запрос на адрес <a href="mailto:support.lina@yandex.ru">support.lina@yandex.ru</a>.</li>
+        <li><strong>Телефон горячей линии:</strong> звоните по номеру <a href="tel:+78979348420">89879348420</a>.</li>
+    </ul>
+
+    <p class="contact-support">
+        Наша команда поддержки всегда готова помочь вам и ответить на ваши вопросы.
+        Мы стремимся предоставлять высококачественный сервис и решать все проблемы как можно быстрее.
+    </p>
+
+    <p class="contact-details">
+        Не забудьте при обращении подробно расписать суть возникшего инцидента и время его возникновения.
+        Это поможет нам лучше понять вашу проблему и найти наиболее эффективное решение.
+    </p>
+
+    <h3 class="contact-thank-you">Спасибо за ваше доверие и ожидание, что мы сможем помочь вам!</h3>
+    <p class="contact-signature">С уважением, администрация сайта - LINA</p>
+</div>
+
+<style>
+    .contact-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-title {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .contact-intro, .contact-description, .contact-support, .contact-details, .contact-signature {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .contact-methods {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .contact-methods li {
+        margin-bottom: 10px;
+    }
+
+    .contact-thank-you {
+        color: #007BFF;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
