@@ -2,13 +2,23 @@
 
 {% block content %}
 
-<h1>{% if form.instance.pk %}Обновление задаи{% else %}Добавление задачи{% endif %}</h1>
+<div class="container my-5">
+  <h1 class="mb-4">
+    {% if form.instance.pk %}Обновление задачи{% else %}Добавление задачи{% endif %}
+  </h1>
 
-<form method="post">
+  <form method="post" class="bg-light p-4 rounded shadow">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% if form.instance.pk %}Обновить{% else %}Добавить{% endif %}</button>
-</form>
+    <div class="form-group">
+      {{ form.as_p }}
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button type="submit" class="btn btn-primary">
+        {% if form.instance.pk %}Обновить{% else %}Добавить{% endif %}
+      </button>
+      <a href="{% url 'task_list' %}" class="btn btn-outline-secondary">Вернуться к списку</a>
+    </div>
+  </form>
+</div>
 
-<a href="{% url 'task_list' %}">Вернуться к списку</a>
 {% endblock %}

@@ -1,19 +1,42 @@
-<!-- list_files.html -->
 {% extends 'layout/basic.html' %}
 
 {% block content %}
 
-<h2>Список загруженных файлов</h2>
-<a href="{% url 'upload_file' %}">Загрузить файл</a>
+<div class="container my-5">
+  <div class="row justify-content-between align-items-center mb-4">
+    <div class="col-auto">
+      <h2>Список загруженных файлов</h2>
+    </div>
+    <div class="col-auto">
+      <a href="{% url 'upload_file' %}" class="btn btn-primary">Загрузить файл</a>
+    </div>
+  </div>
 
-<ul>
-{% for file in files %}
-    <li>
-        <a href="{{ file.file.url }}">{{ file.title }}</a>
-        <a href="{% url 'download_file' file.id %}">Скачать</a>
-        <a href="{% url 'delete_file' file.id %}">Удалить</a>
-    </li>
-{% endfor %}
-</ul>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Название</th>
+          <th scope="col">Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for file in files %}
+        <tr>
+          <td>
+            <a href="{{ file.file.url }}">{{ file.title }}</a>
+          </td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group">
+              <a href="{% url 'download_file' file.id %}" class="btn btn-outline-primary">Скачать</a>
+              <a href="{% url 'delete_file' file.id %}" class="btn btn-outline-danger">Удалить</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 
 {% endblock %}
