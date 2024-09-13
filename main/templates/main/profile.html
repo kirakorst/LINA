@@ -3,11 +3,63 @@
 {% block title %}Профиль пользователя{% endblock %}
 
 {% block content %}
-<h2>Профиль пользователя {{ user.username }}.</h2>
-{% if user.first_name and user.last_name %}
-<p>Здравствуйте, {{ user.first_name }} {{ user.last_name }}!</p>
-{% else %}
-<p>Здравствуйте, {{user.username }}!</p>
-{% endif %}
-<h3>Ваша информация:</h3>
+<div class="profile-container">
+    <h2 class="profile-title">Профиль пользователя {{ user.username }}</h2>
+
+    {% if user.first_name and user.last_name %}
+        <p class="greeting">Здравствуйте, {{ user.first_name }} {{ user.last_name }}!</p>
+    {% else %}
+        <p class="greeting">Здравствуйте, {{ user.username }}!</p>
+    {% endif %}
+
+    <h3 class="info-title">Ваша информация:</h3>
+    <div class="user-info">
+        <!-- Здесь можно добавить дополнительную информацию о пользователе -->
+        <ul>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Дата регистрации:</strong> {{ user.date_joined }}</li>
+            <!-- Добавьте другие поля по мере необходимости -->
+        </ul>
+    </div>
+</div>
+
+<style>
+    .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .profile-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .greeting {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    .info-title {
+        font-size: 20px;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .user-info {
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .user-info ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .user-info li {
+        margin: 5px 0;
+    }
+</style>
 {% endblock %}

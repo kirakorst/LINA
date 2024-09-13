@@ -5,7 +5,7 @@
     <h1 class="results-title">Результаты поиска</h1>
     <ul class="results-list">
         {% for search_query in search_queries %}
-            <li class="results-item">{{ search_query.query }}</li>
+            <li class="results-item" style="color: #333">{{ search_query.query }}</li>
         {% endfor %}
     </ul>
 </div>
