@@ -12,10 +12,15 @@ class Task(models.Model):
         ('В процессе', 'В процессе'),
         ('Выполнена', 'Выполнено'),
     ], default='Новая')
+    complexity = models.CharField(max_length=20, null=True, verbose_name="Сложность", choices=[
+        ('easy', 'Легкий'),
+        ('medium', 'Средний'),
+        ('hard', 'Сложный'),
+    ])
     due_date = models.DateField(default=datetime.datetime.now(),verbose_name="Дата", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null = True, blank = True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank = True)
 
 
     class Meta:   #Склоняет имя модели в ед и мн числе в (админе)

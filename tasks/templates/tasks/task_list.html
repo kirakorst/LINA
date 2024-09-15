@@ -13,6 +13,17 @@
             <div class="task-info" style="color: grey;">
                 <strong>{{ task.title }}</strong>
             </div>
+            <div class="task-complexity">
+                {% if task.complexity == "easy" %}
+                    <span style="color: green;">Легкий</span>
+                {% elif task.complexity == "medium" %}
+                    <span style="color: orange;">Средний</span>
+                {% elif task.complexity == "hard" %}
+                    <span style="color: red;">Сложный</span>
+                {% else %}
+                    <span style="color: grey;">Неизвестная сложность</span>
+                {% endif %}
+            </div>
             <span class="task-status">({{ task.status }})</span>
             <div class="task-actions">
                 <a href="{% url 'task_detail' task.id %}" class="btn btn-link">Подробнее</a>
@@ -60,13 +71,13 @@
     }
 
     .btn-success {
-        background-color: #28a745;
+        background-color: #0d6efd;
         color: white;
         margin-right: 10px;
     }
 
     .btn-success:hover {
-        background-color: #218838;
+        background-color: #4a545c;
     }
 
     .btn-danger {
@@ -81,7 +92,7 @@
     .task-list {
         list-style-type: none;
         padding: 0;
-        max-width: 600px;
+        max-width: 1300px;
         margin: 0 auto;
         border: 1px solid #ddd;
         border-radius: 5px;
