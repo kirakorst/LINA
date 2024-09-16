@@ -30,14 +30,14 @@
                 <a href="{% url 'task_update' task.id %}" class="btn btn-success">Обновить</a>
 
                 {% if task.status == 'Новая' %}
-                    <form action="{% url 'task_accept' task.id %}" method="post" style="display:inline;>
+                    <form action="{% url 'task_accept' task.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-info">Принять</button>
                     </form>
                 {% elif task.status == 'В процессе' %}
                     <form action="{% url 'task_complete' task.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Завершить</button>
+                        <button type="submit" class="btn btn-success" style="background-color: orange;">Завершить</button>
                     </form>
                 {% endif %}
 
@@ -146,6 +146,11 @@
         padding: 15px;
         text-align: center;
         color: #999;
+    }
+
+    .btn-info {
+        color: black;
+       --bs-btn-bg: #0df07c;
     }
 </style>
 {% endblock %}
