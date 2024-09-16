@@ -46,4 +46,20 @@ def task_delete(request, pk):
         return redirect('task_list')
     return render(request, 'tasks/confirm_delete.html', {'task': task})
 
+@login_required
+def task_accept(request, pk):
+    task = Task.objects.get(pk=pk)
+    if task.user != request.user:
+        return redirect('task_list')
+    task.status = 'В процессе'
+    task.save()
+    return redirect('task_detail', pk=task.pk)
 
+@login_required
+def task_complete(request, pk):
+    task = Task.objects.get(pk=pk)
+    if task.user != request.user:
+        return redirect('task_list')
+    task.status = 'Выполнена'
+    task.save()
+    return redirect('task_detail', pk=task.pk)

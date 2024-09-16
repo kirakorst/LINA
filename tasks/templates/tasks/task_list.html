@@ -28,13 +28,30 @@
             <div class="task-actions">
                 <a href="{% url 'task_detail' task.id %}" class="btn btn-link">Подробнее</a>
                 <a href="{% url 'task_update' task.id %}" class="btn btn-success">Обновить</a>
-                <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Удалить</a>
+
+                {% if task.status == 'Новая' %}
+                    <form action="{% url 'task_accept' task.id %}" method="post" style="display:inline;>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-info">Принять</button>
+                    </form>
+                {% elif task.status == 'В процессе' %}
+                    <form action="{% url 'task_complete' task.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Завершить</button>
+                    </form>
+                {% endif %}
+
+                {% if task.status != 'Новая' %}
+                    <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Удалить</a>
+                {% endif %}
             </div>
         </li>
     {% empty %}
         <li class="no-tasks">Задачи не найдены.</li>
     {% endfor %}
 </ul>
+
+
 
 <style>
     .task-title {
