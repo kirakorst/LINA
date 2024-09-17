@@ -1,0 +1,10 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+
+<h1>{{ note.title }}</h1>
+<p>{{ note.content }}</p>
+<p>Создано: {{ note.created_at }}</p>
+<a href="{% url 'note_list' %}" class="btn btn-secondary">Назад к списку</a>
+
+{% endblock %}

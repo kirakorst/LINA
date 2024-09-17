@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'tasks',
     'storage',
     'search',
+    'entries',
     'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',

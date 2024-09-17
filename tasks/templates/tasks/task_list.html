@@ -38,6 +38,7 @@
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success" style="background-color: orange;">Завершить</button>
                     </form>
+                <a href="{% url 'task_update' task.id %}" class="btn btn-success">Обновить</a>
                 {% endif %}
 
                 {% if task.status != 'Новая' %}

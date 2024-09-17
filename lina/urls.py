@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('search.urls')),
     path('tasks/', include('tasks.urls')),
     path('index/', include('main.urls')),
-    path('storage/', include('storage.urls'))
+    path('storage/', include('storage.urls')),
+    path('entries/', include('entries.urls'))
 ]
