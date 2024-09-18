@@ -9,12 +9,12 @@
 
         <div class="form-group">
             <label for="title" class="text-white">Заголовок</label>
-            <input type="text" name="title" id="title" class="form-control form-control-lg bg-secondary text-white border border-light" placeholder="Введите заголовок" required>
+            <input type="text" name="title" id="title" class="form-control form-control-lg bg-secondary text-black border border-light" placeholder="Введите заголовок" required>
         </div>
 
         <div class="form-group">
             <label for="content" class="text-white">Содержимое</label>
-            <textarea name="content" id="content" class="form-control form-control-lg bg-secondary text-white border border-light" rows="6" placeholder="Введите содержимое" required></textarea>
+            <textarea name="content" id="content" class="form-control form-control-lg bg-secondary text-black border border-light" rows="6" placeholder="Введите содержимое" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg btn-block">Сохранить</button>
@@ -24,13 +24,21 @@
 
 <style>
     .bg-dark {
-        background-color: #343a40 !important; /* Темный фон для формы */
+        background-color: #212121 !important; /* Светлый фон для формы */
     }
     .form-control:focus {
         background-color: #495057; /* Цвет фона при фокусе */
-        color: white; /* Цвет текста при фокусе */
-        border-color: #80bdff; /* Цвет рамки при фокусе */
+        color: black; /* Цвет текста при фокусе */
+        border-color: black; /* Цвет рамки при фокусе */
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+    }
+
+    .bg-secondary {
+        background-color: white !important;
+    }
+
+    .border {
+        border: var(--bs-border-width) var(--bs-border-style) #34373b!important;
     }
 </style>
 
