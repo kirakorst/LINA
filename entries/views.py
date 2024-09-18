@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def note_list(request):
-    notes = entries.objects.all()
+    notes = entries.objects.filter(user=request.user)
     return render(request, 'entries/note_list.html', {'notes': notes})
 
 @login_required
