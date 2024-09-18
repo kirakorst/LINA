@@ -2,9 +2,39 @@
 
 {% block content %}
 
-<h1>{{ note.title }}</h1>
-<p>{{ note.content }}</p>
-<p>Создано: {{ note.created_at }}</p>
-<a href="{% url 'note_list' %}" class="btn btn-secondary">Назад к списку</a>
+<div class="container mt-5">
+    <div class="card shadow-lg border-light">
+        <div class="card-header bg-gradient">
+            <h1 class="mb-0 text-black">{{ note.title }}</h1> <!-- Добавлен класс text-black -->
+        </div>
+        <div class="card-body text-dark">
+            <p class="card-text text-black">{{ note.content }}</p>
+            <p class="text-muted">Создано: {{ note.created_at|date:"d.m.Y H:i" }}</p>
+            <a href="{% url 'note_list' %}" class="btn btn-secondary btn-lg">Назад к списку</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient {
+        background: linear-gradient(135deg, #007bff, #6610f2);
+    }
+    .card {
+        border-radius: 1rem;
+    }
+    .card-header {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+</style>
 
 {% endblock %}

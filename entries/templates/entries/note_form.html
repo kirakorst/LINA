@@ -2,12 +2,36 @@
 
 {% block content %}
 
-<h1>Создать заметку</h1>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="title" placeholder="Заголовок" required>
-    <textarea name="content" placeholder="Содержимое" required></textarea>
-    <button type="submit">Сохранить</button>
-</form>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-white">Создать заметку</h1>
+    <form method="POST" class="border p-4 rounded shadow-lg bg-dark">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="title" class="text-white">Заголовок</label>
+            <input type="text" name="title" id="title" class="form-control form-control-lg bg-secondary text-white border border-light" placeholder="Введите заголовок" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content" class="text-white">Содержимое</label>
+            <textarea name="content" id="content" class="form-control form-control-lg bg-secondary text-white border border-light" rows="6" placeholder="Введите содержимое" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Сохранить</button>
+        <a href="{% url 'note_list' %}" class="btn btn-secondary btn-lg btn-block mt-2">Назад к списку заметок</a>
+    </form>
+</div>
+
+<style>
+    .bg-dark {
+        background-color: #343a40 !important; /* Темный фон для формы */
+    }
+    .form-control:focus {
+        background-color: #495057; /* Цвет фона при фокусе */
+        color: white; /* Цвет текста при фокусе */
+        border-color: #80bdff; /* Цвет рамки при фокусе */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+    }
+</style>
 
 {% endblock %}
