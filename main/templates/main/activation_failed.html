@@ -3,7 +3,9 @@
 {% block title %}Ошибка при активации{% endblock %}
 
 {% block content %}
-<h2>Активация</h2>
-<p>Активация пользователя с таким именем прошла неудачно.</p>
-<p><a href="{% url 'main:register' %}">Зарегистрироваться повторно</a> </p>
+<h2 style="color: #F44336; text-align: center;">Ошибка активации</h2>
+<p style="font-size: 18px; text-align: center; color: #555;">Активация пользователя с таким именем прошла неудачно.</p>
+<p style="text-align: center;">
+    <a href="{% url 'main:register' %}" style="background-color: #FF5722; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Зарегистрироваться повторно</a>
+</p>
 {% endblock %}

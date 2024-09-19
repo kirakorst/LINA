@@ -23,5 +23,6 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('index/', include('main.urls')),
     path('storage/', include('storage.urls')),
-    path('entries/', include('entries.urls'))
+    path('entries/', include('entries.urls')),
+    path('captcha/', include('captcha.urls'))
 ]

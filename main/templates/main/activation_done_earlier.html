@@ -3,7 +3,9 @@
 {% block title %}Пользователь уже активирован{% endblock %}
 
 {% block content %}
-<h2>Активация</h2>
-<p>Пользователь с таким именем уже был активирован ранее.</p>
-<p><a href="{% url 'main:login' %}">Войти на сайт</a> </p>
+<h2 style="color: #FF5722; text-align: center;">Активация</h2>
+<p style="font-size: 18px; text-align: center;">Пользователь с таким именем уже был активирован ранее.</p>
+<p style="text-align: center;">
+    <a href="{% url 'main:login' %}" style="background-color: #FF9800; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Войти на сайт</a>
+</p>
 {% endblock %}

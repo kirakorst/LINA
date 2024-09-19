@@ -3,7 +3,7 @@ from .models import AdvUser
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from .signals import post_register
-
+from captcha.fields import CaptchaField
 
 
 
@@ -13,6 +13,7 @@ class RegisterForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Адрес электронной почты')
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput, help_text=password_validation.password_validators_help_text_html())
     password2 = forms.CharField(label='Пароль (повторно)', widget=forms.PasswordInput, help_text='Введите тот же самый пароль еще раз для проверки')
+    captcha = CaptchaField()
 
     def clean_password1(self):
         password1 = self.cleaned_data['password1']
