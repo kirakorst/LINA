@@ -77,3 +77,27 @@ li {
 }
 
 
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #6f42c1;
+}
+
+.dropdown-menu {
+    --bs-dropdown-bg: #0d0d13; /* Фоновый цвет */
+    border-color: white; /* Цвет границы */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    padding: 10px; /* Отступы внутри меню */
+}
+
+.dropdown-menu a {
+    color: #343a40; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 8px 12px; /* Отступы для ссылок */
+    display: block; /* Делаем ссылки блочными элементами */
+    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* Цвет фона при наведении */
+    color: #6f42c1; /* Цвет текста при наведении */
+}
