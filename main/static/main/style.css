@@ -98,6 +98,6 @@ li {
 }
 
 .dropdown-menu a:hover {
-    background-color: rgba(0, 123, 255, 0.2); /* Цвет фона при наведении */
-    color: #6f42c1; /* Цвет текста при наведении */
+    background-color: #6f42c1; /* Цвет фона при наведении */
+    color: white; /* Цвет текста при наведении */
 }
