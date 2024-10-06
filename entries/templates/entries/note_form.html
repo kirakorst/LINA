@@ -1,10 +1,11 @@
 {% extends 'layout/basic.html' %}
 
-{% block content %}
+{% load static %}  <!-- Загрузите тег для работы со статическими файлами -->
 
+{% block content %}
 <div class="container mt-5">
     <h1 class="mb-4 text-center text-white">Создать заметку</h1>
-    <form method="POST" class="border p-4 rounded shadow-lg bg-dark">
+    <form method="POST" class="border p-4 rounded shadow-lg bg-dark" enctype="multipart/form-data">  <!-- Добавьте enctype для загрузки файлов -->
         {% csrf_token %}
 
         <div class="form-group">
@@ -14,12 +15,15 @@
 
         <div class="form-group">
             <label for="content" class="text-white">Содержимое</label>
-            <textarea name="content" id="content" class="form-control form-control-lg bg-secondary text-black border border-light" rows="6" placeholder="Введите содержимое" required></textarea>
+            {{ form.body|safe }}  <!-- Используйте правильное имя поля формы -->
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg btn-block">Сохранить</button>
         <a href="{% url 'note_list' %}" class="btn btn-secondary btn-lg btn-block mt-2">Назад к списку заметок</a>
     </form>
+
+    <!-- Подключите скрипт CKEditor, если это необходимо -->
+    <script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>  <!-- Убедитесь, что путь правильный -->
 </div>
 
 <style>

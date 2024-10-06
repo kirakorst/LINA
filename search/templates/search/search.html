@@ -2,17 +2,18 @@
 
 {% block content %}
 <div class="search-container">
-    <h2 class="search-title">Помощник</h2>
+    <h2 class="search-title"></h2>
 
     <form method="post" class="search-form">
         {% csrf_token %}
-        <input type="text" name="query" class="search-input" placeholder="Введите поисковый запрос" required>
-        <button type="submit" class="search-button">Поиск</button>
+        <div class="search-wrapper">
+            <input type="text" name="query" class="search-input" placeholder="Введите поисковый запрос" required>
+            <button type="submit" class="search-button">Поиск</button>
+        </div>
     </form>
 </div>
 
 <style>
-
     footer {
         display: none;
     }
@@ -23,9 +24,8 @@
         align-items: center;
         justify-content: center;
         height: 85vh;
-        background-color: #f0f4f8;
+        background-color: #0d0d13;
         border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         padding: 20px;
     }
 
@@ -43,34 +43,48 @@
         width: 100%;
     }
 
+    .search-wrapper {
+        position: relative; /* Для позиционирования кнопки */
+    }
+
     .search-input {
-        width: 300px;
-        padding: 10px;
+        width: 600px;
+        padding: 15px 50px; /* Увеличенное значение справа для кнопки */
         border: 1px solid #ccc;
         border-radius: 4px;
         font-size: 1em;
-        margin-right: 10px;
-        transition: border-color 0.3s;
+        color: white; /* Цвет текста в поле ввода */
+        background-color: transparent; /* Прозрачный фон, чтобы текст был виден на темном фоне */
+        transition: border-color 0.3s, background-color 0.3s; /* Плавный переход цвета рамки и фона */
+    }
+
+    .search-input::placeholder {
+        color: #ccc; /* Цвет текста плейсхолдера */
     }
 
     .search-input:focus {
-        border-color: #007bff;
-        outline: none;
+        border-color: #6f42c1; /* Цвет рамки при фокусе */
+        background-color: rgba(0, 123, 255, 0.1); /* Полупрозрачный фон при фокусе */
+        outline: none; /* Убираем стандартное обрамление */
     }
 
     .search-button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 1em;
-        cursor: pointer;
-        transition: background-color 0.3s;
+        position: absolute; /* Позиционирование кнопки */
+        right: 10px; /* Отступ от правого края */
+        top: 50%; /* Центрирование по вертикали */
+        transform: translateY(-50%); /* Центрирование по вертикали */
+        padding: 10px 20px; /* Уменьшенный отступ */
+        background-color: #0d0d13; /* Исходный цвет фона кнопки */
+        color: white; /* Цвет текста кнопки */
+        border: none; /* Убираем рамку */
+        border-radius: 4px; /* Скругление углов */
+        font-size: 1em; /* Размер шрифта */
+        cursor: pointer; /* Курсор в виде указателя при наведении */
+        transition: background-color 0.3s, transform 0.3s; /* Плавный переход цвета и эффекта увеличения */
     }
 
     .search-button:hover {
-        background-color: #0056b3;
+        background-color: #6f42c1; /* Новый цвет фона при наведении */
     }
 </style>
 {% endblock %}

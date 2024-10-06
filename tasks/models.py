@@ -1,7 +1,7 @@
 import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
-
+from django.utils import timezone
 from django.db import models
 
 class Task(models.Model):
@@ -17,7 +17,7 @@ class Task(models.Model):
         ('medium', 'Средний'),
         ('hard', 'Сложный'),
     ])
-    due_date = models.DateField(default=datetime.datetime.now(),verbose_name="Дата", null=True, blank=True)
+    due_date = models.DateField(default=timezone.now,verbose_name="Дата", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank = True)

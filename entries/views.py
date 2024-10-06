@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import entries
+from .forms import EntriesForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -11,11 +12,14 @@ def note_list(request):
 @login_required
 def note_create(request):
     if request.method == 'POST':
+        form = EntriesForm(request.POST)
         title = request.POST['title']
-        content = request.POST['content']
-        entries.objects.create(title=title, content=content)
-        return redirect('note_list')
-    return render(request, 'entries/note_form.html')
+        if form.is_valid():
+            form.save()
+            return redirect('note_list')
+    else:
+        form = EntriesForm()
+    return render(request, 'entries/note_form.html', {'form': form})
 
 @login_required
 def note_edit(request, note_id):
